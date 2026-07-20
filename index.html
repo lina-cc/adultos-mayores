@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExperienciaSenior | Inclusión Laboral y Talento Mayor</title>
+  <meta name="description" content="Plataforma líder para la inclusión laboral de adultos mayores. Conectamos talento senior con empresas inclusivas, capacitación y coaching laboral.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Lucide Icons CDN for beautiful accessible icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER & NAVIGATION
+       ========================================== -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="#" class="logo" id="logo-link">
+        <i data-lucide="award"></i> Experiencia<span>Senior</span>
+      </a>
+      
+      <nav aria-label="Navegación principal">
+        <ul class="nav-menu" id="nav-menu">
+          <li><span class="nav-link active" data-target="landing">Inicio</span></li>
+          <li><span class="nav-link" data-target="empresas">Soy Empresa</span></li>
+          <li><span class="nav-link" data-target="trabajadores">Busco Empleo</span></li>
+          <li><span class="nav-link" data-target="nosotros">Nosotros</span></li>
+          <li><span class="nav-link" data-target="contacto">Contacto</span></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-outline-accent" id="a11y-header-btn" aria-label="Abrir panel de accesibilidad" title="Opciones de accesibilidad">
+          <i data-lucide="accessibility"></i> <span class="hide-mobile">Accesibilidad</span>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         VISTA 1: LANDING PAGE (Inicio / Selector)
+         ========================================== -->
+    <section id="view-landing" class="view-section active">
+      <div class="hero">
+        <div class="container">
+          <h1>El talento y la experiencia<br><span>no tienen edad</span></h1>
+          <p>Conectamos la sabiduría y confiabilidad de profesionales senior con empresas que valoran la experiencia y buscan construir equipos intergeneracionales más fuertes.</p>
+          <div class="flex" style="justify-content: center; gap: 16px; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-lg" onclick="switchView('trabajadores')">
+              Soy Adulto Mayor y busco empleo <i data-lucide="arrow-right"></i>
+            </button>
+            <button class="btn btn-secondary btn-lg" onclick="switchView('empresas')">
+              Soy Empresa y busco talento
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container section-padding">
+        <h2 class="text-center" style="font-size: var(--font-xxl); margin-bottom: 16px;">¿Cómo deseas comenzar hoy?</h2>
+        <p class="text-center" style="color: var(--text-muted); max-width: 600px; margin: 0 auto 48px;">Selecciona tu perfil para mostrarte las opciones de financiamiento, capacitaciones u ofertas laborales correspondientes a tu búsqueda.</p>
+        
+        <div class="profile-selector">
+          <div class="profile-grid">
+            <!-- Tarjeta Izquierda: Soy Empresa -->
+            <article class="profile-card">
+              <div class="profile-img-container">
+                <img src="images/senior_empresa.png" alt="Profesional senior colaborando en oficina moderna con una colega joven" class="profile-img" loading="lazy">
+              </div>
+              <div class="profile-body">
+                <div>
+                  <h3>Soy Empresa</h3>
+                  <p>Quiero incorporar el compromiso, lealtad y madurez del talento senior a mi organización. Conozca los beneficios tributarios y agende una asesoría experta sin costo.</p>
+                </div>
+                <button class="btn btn-primary btn-lg" onclick="switchView('empresas')" aria-label="Ingresar a sección para Empresas">
+                  Incorporar Talento Senior <i data-lucide="briefcase"></i>
+                </button>
+              </div>
+            </article>
+
+            <!-- Tarjeta Derecha: Busco Empleo -->
+            <article class="profile-card">
+              <div class="profile-img-container">
+                <img src="images/senior_empleo.png" alt="Mujer senior sonriente frente a su computadora portátil en un ambiente luminoso" class="profile-img" loading="lazy">
+              </div>
+              <div class="profile-body">
+                <div>
+                  <h3>Busco Empleo</h3>
+                  <p>Encuentra ofertas de trabajo flexibles diseñadas para tu estilo de vida. Accede a capacitaciones digitales gratuitas, talleres para armar tu CV y coaching personalizado.</p>
+                </div>
+                <button class="btn btn-primary btn-lg" onclick="switchView('trabajadores')" aria-label="Ingresar a sección para Adultos Mayores">
+                  Encontrar mi Pega <i data-lucide="search"></i>
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VISTA 2: SECCIÓN EMPRESAS
+         ========================================== -->
+    <section id="view-empresas" class="view-section">
+      <div class="companies-hero">
+        <div class="container">
+          <h1>Potencie su empresa con Talento Senior</h1>
+          <p>La experiencia no solo resuelve problemas más rápido, también aporta estabilidad, mentoría natural y cohesión a los equipos de trabajo modernos.</p>
+        </div>
+      </div>
+
+      <!-- Sección 1: Propuesta de Valor -->
+      <section class="container section-padding">
+        <h2 class="text-center" style="font-size: var(--font-xxl); margin-bottom: 12px;">¿Por qué contratar profesionales mayores de 50 años?</h2>
+        <p class="text-center" style="color: var(--text-muted); max-width: 600px; margin: 0 auto 48px;">Integrar personas mayores enriquece la cultura corporativa y aumenta los niveles de efectividad organizacional.</p>
+        
+        <div class="value-grid grid">
+          <!-- Bloque 1 -->
+          <div class="value-card">
+            <div class="icon-wrapper">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <h3>Lealtad y Compromiso</h3>
+            <p>Los trabajadores senior registran menores tasas de ausentismo y una permanencia promedio un 40% mayor. Aportan estabilidad y constancia al equipo laboral.</p>
+          </div>
+
+          <!-- Bloque 2 -->
+          <div class="value-card">
+            <div class="icon-wrapper">
+              <i data-lucide="users"></i>
+            </div>
+            <h3>Mentoría Intergeneracional</h3>
+            <p>Facilitan la transferencia de conocimientos prácticos y actúan como guías naturales para las generaciones jóvenes, reduciendo los tiempos de capacitación.</p>
+          </div>
+
+          <!-- Bloque 3 -->
+          <div class="value-card">
+            <div class="icon-wrapper">
+              <i data-lucide="smile"></i>
+            </div>
+            <h3>Clima Laboral Positivo</h3>
+            <p>Poseen alta resiliencia y madurez para resolver conflictos interpersonales. Su presencia suaviza el ambiente de oficina e incrementa el bienestar general.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección 2: Marco Legal, Deberes y Responsabilidades -->
+      <section class="section-padding" style="background-color: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <div class="container">
+          <h2 class="text-center" style="font-size: var(--font-xxl); margin-bottom: 12px;">Marco Legal y Adaptabilidad</h2>
+          <p class="text-center" style="color: var(--text-muted); max-width: 600px; margin: 0 auto 48px;">Todo lo que su departamento de Recursos Humanos necesita saber sobre contrataciones inclusivas.</p>
+          
+          <div class="legal-accordion" id="legal-accordion" role="presentation">
+            <!-- Item 1 -->
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false" aria-controls="legal-content-1">
+                <span>Beneficios tributarios y subsidios por contratación senior</span>
+                <i data-lucide="chevron-down" class="accordion-icon"></i>
+              </button>
+              <div id="legal-content-1" class="accordion-content" role="region">
+                <div class="accordion-body">
+                  <p>Existen incentivos gubernamentales diseñados para fomentar la empleabilidad senior:</p>
+                  <ul>
+                    <li><strong>Subsidio al Empleo Adulto Mayor:</strong> Bonificación mensual equivalente a un porcentaje del sueldo imponible durante el primer año.</li>
+                    <li><strong>Franquicia Tributaria SENCE:</strong> Deducción de impuestos por gastos asociados a la capacitación digital y técnica de trabajadores de más de 55 años.</li>
+                    <li><strong>Puntaje adicional en licitaciones:</strong> Enfoque de equidad de edad certificado en el registro de proveedores del Estado.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false" aria-controls="legal-content-2">
+                <span>Tipos de contratos recomendados (jornadas parciales y flexibilidad)</span>
+                <i data-lucide="chevron-down" class="accordion-icon"></i>
+              </button>
+              <div id="legal-content-2" class="accordion-content" role="region">
+                <div class="accordion-body">
+                  <p>La flexibilidad horaria es clave para el éxito de la contratación de adultos mayores:</p>
+                  <ul>
+                    <li><strong>Contratos de Jornada Parcial (Part-time):</strong> Permitidos por la ley laboral común, ideales para compatibilizar jubilaciones con ingresos activos adicionales sin perder beneficios previsionales.</li>
+                    <li><strong>Teletrabajo y Trabajo Híbrido:</strong> Contratos con cláusula de adaptabilidad geográfica, ideales para seniors con dificultades de movilidad.</li>
+                    <li><strong>Asesoría Técnica y Consultoría Externa:</strong> Contratos por proyectos u honorarios específicos, ideales para traspasar conocimientos especializados de alto nivel.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false" aria-controls="legal-content-3">
+                <span>Responsabilidades de adaptabilidad y ergonomía en el puesto de trabajo</span>
+                <i data-lucide="chevron-down" class="accordion-icon"></i>
+              </button>
+              <div id="legal-content-3" class="accordion-content" role="region">
+                <div class="accordion-body">
+                  <p>Las organizaciones deben asegurar entornos accesibles y seguros:</p>
+                  <ul>
+                    <li><strong>Puestos de trabajo ergonómicos:</strong> Sillas ajustables, pantallas grandes con filtros antirreflejo y mouse anatómico.</li>
+                    <li><strong>Accesibilidad Física:</strong> Entradas y pasillos libres de obstáculos, rampas de acceso e iluminación uniforme en el espacio laboral.</li>
+                    <li><strong>Descansos activos y flexibilidad:</strong> Programación de micro-pausas saludables obligatorias para prevenir dolores musculares o fatiga visual.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección 3: Conversión (Agendamiento y Contacto) -->
+      <section class="container section-padding">
+        <h2 class="text-center" style="font-size: var(--font-xxl); margin-bottom: 12px;">Comience la transformación intergeneracional</h2>
+        <p class="text-center" style="color: var(--text-muted); max-width: 600px; margin: 0 auto 48px;">Complete el formulario para que un consultor se contacte con usted, o agende una videollamada de asesoría directamente en nuestro calendario interactivo.</p>
+        
+        <div class="conversion-split">
+          <!-- Formulario de Contacto -->
+          <div class="contact-card">
+            <h3>Solicitar Información</h3>
+            <form id="employer-contact-form" novalidate>
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label for="company-name" class="form-label">Nombre de la Empresa *</label>
+                <input type="text" id="company-name" class="form-control" placeholder="Ej: Innovaciones Ltda" required>
+              </div>
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label for="company-email" class="form-label">Correo Electrónico Corporativo *</label>
+                <input type="email" id="company-email" class="form-control" placeholder="Ej: contacto@empresa.com" required>
+              </div>
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label for="company-phone" class="form-label">Teléfono de Contacto</label>
+                <input type="tel" id="company-phone" class="form-control" placeholder="Ej: +56 9 1234 5678">
+              </div>
+              <div class="form-group" style="margin-bottom: 24px;">
+                <label for="company-message" class="form-label">¿En qué podemos ayudarle? *</label>
+                <textarea id="company-message" class="form-control" placeholder="Escriba su consulta o el perfil de talento que requiere contratar..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                Enviar Consulta <i data-lucide="send"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- Bloque Calendly Simulado -->
+          <div class="calendar-card">
+            <h3>Agendar Reunión Online</h3>
+            <p style="font-size: var(--font-sm); color: var(--text-muted); margin-bottom: -8px;">Agenda una sesión de 20 minutos por Zoom o Meet con un consultor experto en inclusión senior.</p>
+            
+            <div class="calendar-widget">
+              <div class="calendar-header">
+                <button aria-label="Mes anterior" id="cal-prev" style="color: #fff;"><i data-lucide="chevron-left"></i></button>
+                <span id="calendar-month-year">Julio 2026</span>
+                <button aria-label="Mes siguiente" id="cal-next" style="color: #fff;"><i data-lucide="chevron-right"></i></button>
+              </div>
+              <div class="calendar-grid" id="calendar-days">
+                <!-- Days will be loaded by JS -->
+              </div>
+              
+              <div style="padding: 12px 16px 0; border-top: 1px solid var(--border);">
+                <span class="a11y-label">Selecciona una hora disponible:</span>
+              </div>
+              <div class="time-slots" id="time-slots-container">
+                <button class="time-slot" data-time="09:00">09:00 AM</button>
+                <button class="time-slot" data-time="11:30">11:30 AM</button>
+                <button class="time-slot" data-time="15:00">03:00 PM</button>
+              </div>
+            </div>
+            
+            <button class="btn btn-outline-accent btn-lg" id="book-meeting-btn" disabled>
+              Confirmar Reunión <i data-lucide="calendar"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ==========================================
+         VISTA 3: SECCIÓN TRABAJADOR (ADULTO MAYOR)
+         ========================================== -->
+    <section id="view-trabajadores" class="view-section">
+      <div class="worker-hero">
+        <div class="container">
+          <h1>Su experiencia es nuestro valor más grande</h1>
+          <p>Buscamos ofertas laborales con jornadas flexibles, sin discriminación de edad y con capacitaciones continuas.</p>
+        </div>
+      </div>
+
+      <!-- Sección 1: Buscador de Empleo ("Encuentra tu Pega") -->
+      <section class="container" style="padding-bottom: 60px;">
+        <div class="job-search-panel">
+          <h2 style="font-size: var(--font-xl); margin-bottom: 20px;" id="search-title">Buscador de Empleo</h2>
+          <form id="job-search-form" class="search-grid" onsubmit="event.preventDefault(); filterJobs();">
+            <div class="form-group">
+              <label for="search-keyword" class="form-label">Palabra clave</label>
+              <input type="text" id="search-keyword" class="form-control" placeholder="Ej: Administrativo, Vendedor, Supervisor...">
+            </div>
+            <div class="form-group">
+              <label for="search-location" class="form-label">Comuna / Región</label>
+              <select id="search-location" class="form-control">
+                <option value="">Todas las comunas</option>
+                <option value="Santiago">Santiago</option>
+                <option value="Providencia">Providencia</option>
+                <option value="Las Condes">Las Condes</option>
+                <option value="Viña del Mar">Viña del Mar</option>
+                <option value="Concepción">Concepción</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="search-type" class="form-label">Tipo de Jornada</label>
+              <select id="search-type" class="form-control">
+                <option value="">Todas las jornadas</option>
+                <option value="Part-time">Part-time (Media jornada)</option>
+                <option value="Full-time">Full-time (Jornada completa)</option>
+                <option value="Remoto">100% Remoto</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="filterJobs()" style="height: 52px; width: 100%;">
+              Buscar <i data-lucide="search"></i>
+            </button>
+          </form>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+          <h3 style="font-size: var(--font-lg);" id="results-count">Se muestran 3 vacantes de empleo</h3>
+          <button class="btn btn-secondary btn-sm" onclick="resetFilters()" style="padding: 6px 12px; min-height: auto; font-size: var(--font-sm);">
+            Limpiar filtros
+          </button>
+        </div>
+
+        <!-- Lista de Tarjetas de Ofertas de Empleo -->
+        <div class="jobs-list" id="jobs-list-container">
+          <!-- Card 1 -->
+          <article class="job-card" data-keyword="administrativo asistente recepcionista" data-location="Providencia" data-type="Part-time">
+            <div class="job-info">
+              <div class="job-header-row">
+                <h3>Asistente de Recepción y Atención</h3>
+                <span class="badge-inclusiva" title="Esta empresa cuenta con certificado de inclusión senior activa">
+                  <i data-lucide="check-circle-2"></i> Empresa Inclusiva
+                </span>
+              </div>
+              <p style="font-weight: 600; color: var(--primary);">Clínica Dental San Lucas</p>
+              <div class="job-meta-row">
+                <span class="job-meta-item"><i data-lucide="map-pin"></i> Providencia</span>
+                <span class="job-meta-item"><i data-lucide="clock"></i> Part-time (Lunes a Viernes 09:00 - 13:00)</span>
+                <span class="job-salary">$480.000 / mes</span>
+              </div>
+            </div>
+            <div class="job-action">
+              <button class="btn btn-primary btn-lg" onclick="openApplyModal('Asistente de Recepción', 'Clínica Dental San Lucas')">
+                Postular aquí <i data-lucide="send"></i>
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="job-card" data-keyword="supervisor logistica inventario bodega" data-location="Santiago" data-type="Full-time">
+            <div class="job-info">
+              <div class="job-header-row">
+                <h3>Supervisor de Control de Inventario</h3>
+                <span class="badge-inclusiva">
+                  <i data-lucide="check-circle-2"></i> Empresa Inclusiva
+                </span>
+              </div>
+              <p style="font-weight: 600; color: var(--primary);">Distribuidora TransSur S.A.</p>
+              <div class="job-meta-row">
+                <span class="job-meta-item"><i data-lucide="map-pin"></i> Santiago Centro</span>
+                <span class="job-meta-item"><i data-lucide="clock"></i> Full-time (Turno fijo diurno, no requiere fuerza física)</span>
+                <span class="job-salary">$750.000 / mes</span>
+              </div>
+            </div>
+            <div class="job-action">
+              <button class="btn btn-primary btn-lg" onclick="openApplyModal('Supervisor de Control de Inventario', 'Distribuidora TransSur S.A.')">
+                Postular aquí <i data-lucide="send"></i>
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="job-card" data-keyword="consultor senior atencion al cliente ejecutivo ventas" data-location="Santiago" data-type="Remoto">
+            <div class="job-info">
+              <div class="job-header-row">
+                <h3>Consultor Senior de Atención Telefónica</h3>
+                <span class="badge-inclusiva">
+                  <i data-lucide="check-circle-2"></i> Empresa Inclusiva
+                </span>
+              </div>
+              <p style="font-weight: 600; color: var(--primary);">Seguros VidaPlena</p>
+              <div class="job-meta-row">
+                <span class="job-meta-item"><i data-lucide="map-pin"></i> 100% Remoto (Desde cualquier parte de Chile)</span>
+                <span class="job-meta-item"><i data-lucide="clock"></i> Flexible (30 horas semanales a convenir)</span>
+                <span class="job-salary">$600.000 + Comisiones</span>
+              </div>
+            </div>
+            <div class="job-action">
+              <button class="btn btn-primary btn-lg" onclick="openApplyModal('Consultor Senior de Atención Telefónica', 'Seguros VidaPlena')">
+                Postular aquí <i data-lucide="send"></i>
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Sección 2: Espacio de Coaching y Acompañamiento -->
+      <section class="coaching-section" style="border-top: 1px solid var(--border);">
+        <div class="container">
+          <h2 class="text-center" style="font-size: var(--font-xxl); color: var(--primary);">Espacio de Coaching y Acompañamiento</h2>
+          <p class="text-center" style="color: var(--text-muted); max-width: 600px; margin: 8px auto 40px;">Entendemos que reinsertarse laboralmente puede ser un desafío. Te apoyamos gratis con talleres prácticos y mentores individuales.</p>
+          
+          <h3 style="font-size: var(--font-lg); border-bottom: 2px solid var(--border); padding-bottom: 12px; margin-bottom: 24px;">Talleres Prácticos Disponibles</h3>
+          
+          <div class="coaching-grid">
+            <!-- Taller 1 -->
+            <article class="workshop-card">
+              <div>
+                <span class="workshop-badge">Digital</span>
+                <h4 style="margin-top: 12px; margin-bottom: 8px;">Taller: Currículum Moderno y Perfil Digital</h4>
+                <p>Aprende a redactar un currículum enfocado en logros, a crear tu cuenta de LinkedIn y a registrarte de forma segura en portales de empleo de internet.</p>
+              </div>
+              <button class="btn btn-primary" onclick="openWorkshopModal('Currículum Moderno y Perfil Digital')">
+                Inscribirme gratis <i data-lucide="pen-tool"></i>
+              </button>
+            </article>
+
+            <!-- Taller 2 -->
+            <article class="workshop-card">
+              <div>
+                <span class="workshop-badge">Tecnología</span>
+                <h4 style="margin-top: 12px; margin-bottom: 8px;">Uso de Herramientas de Videoconferencia</h4>
+                <p>Pierde el miedo a las entrevistas online. Practicaremos cómo conectarte a Zoom, Google Meet y Microsoft Teams, cómo configurar tu cámara, audio y luces de fondo.</p>
+              </div>
+              <button class="btn btn-primary" onclick="openWorkshopModal('Uso de Herramientas de Videoconferencia')">
+                Inscribirme gratis <i data-lucide="video"></i>
+              </button>
+            </article>
+
+            <!-- Taller 3 -->
+            <article class="workshop-card">
+              <div>
+                <span class="workshop-badge">Finanzas</span>
+                <h4 style="margin-top: 12px; margin-bottom: 8px;">Boletas de Honorarios y Regulación Previsional</h4>
+                <p>Conoce los alcances legales de trabajar estando jubilado. Aprende a emitir boletas de honorarios en el SII y a regularizar tus retenciones impositivas.</p>
+              </div>
+              <button class="btn btn-primary" onclick="openWorkshopModal('Boletas de Honorarios y Regulación Previsional')">
+                Inscribirme gratis <i data-lucide="file-text"></i>
+              </button>
+            </article>
+          </div>
+
+          <!-- Banner destacado Mentoría 1 a 1 -->
+          <div class="mentorship-banner">
+            <div class="mentorship-content">
+              <h3>¿Necesitas ayuda personalizada para prepararte?</h3>
+              <p>Agenda una mentoría individual virtual con un psicólogo laboral experto en orientación senior. Te ayudaremos a ensayar entrevistas de trabajo y a ganar seguridad en tu perfil.</p>
+            </div>
+            <button class="btn btn-primary btn-lg" style="background-color: var(--accent); color: #fff;" onclick="openMentorshipModal()">
+              Solicitar un Coach Laboral <i data-lucide="user-check"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ==========================================
+         VISTAS SECUNDARIAS (Nosotros y Contacto)
+         ========================================== -->
+    <section id="view-nosotros" class="view-section">
+      <div class="container section-padding">
+        <h1 class="text-center" style="font-size: var(--font-hero); margin-bottom: 24px;">Sobre Nosotros</h1>
+        <p class="text-center" style="color: var(--text-muted); max-width: 700px; margin: 0 auto 48px; font-size: var(--font-lg);">Somos una corporación sin fines de lucro que cree en el valor de la madurez y la experiencia laboral. Nuestra misión es acortar la brecha de edad en los equipos de trabajo modernos, brindando herramientas de capacitación digital a adultos mayores y guiando a las empresas en procesos de reclutamiento inclusivos y ergonómicos.</p>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+          <div class="value-card">
+            <h3>Nuestra Visión</h3>
+            <p>Un mercado laboral donde la edad biológica sea secundaria a la capacidad técnica, la confiabilidad y el valor humano de las personas.</p>
+          </div>
+          <div class="value-card">
+            <h3>Nuestro Compromiso</h3>
+            <p>Garantizar que toda oferta en nuestra plataforma cumpla estrictos criterios de trato ético, accesibilidad y condiciones seguras.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-contacto" class="view-section">
+      <div class="container section-padding">
+        <h1 class="text-center" style="font-size: var(--font-hero); margin-bottom: 24px;">Contáctanos</h1>
+        <p class="text-center" style="color: var(--text-muted); max-width: 600px; margin: 0 auto 48px;">¿Tienes dudas sobre cómo publicar una vacante o cómo inscribirte en los cursos? Escríbenos directamente y te responderemos en menos de 24 horas.</p>
+        
+        <div class="contact-card" style="max-width: 600px; margin: 0 auto;">
+          <h3>Formulario de Contacto General</h3>
+          <form id="general-contact-form" novalidate>
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label for="contact-name" class="form-label">Nombre Completo *</label>
+              <input type="text" id="contact-name" class="form-control" placeholder="Ej: María José Pérez" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label for="contact-email" class="form-label">Correo Electrónico *</label>
+              <input type="email" id="contact-email" class="form-control" placeholder="Ej: maria.perez@email.com" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 24px;">
+              <label for="contact-message" class="form-label">Mensaje *</label>
+              <textarea id="contact-message" class="form-control" placeholder="Escribe tu mensaje o consulta..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+              Enviar Mensaje <i data-lucide="send"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h4>ExperienciaSenior</h4>
+        <p>Promovemos la inclusión laboral senior y el traspaso de conocimientos intergeneracionales en las organizaciones del futuro.</p>
+        <div class="flex" style="gap: 16px;">
+          <a href="#" aria-label="Facebook" style="font-size: 1.4rem; color: var(--primary-soft);"><i data-lucide="facebook"></i></a>
+          <a href="#" aria-label="LinkedIn" style="font-size: 1.4rem; color: var(--primary-soft);"><i data-lucide="linkedin"></i></a>
+          <a href="#" aria-label="Instagram" style="font-size: 1.4rem; color: var(--primary-soft);"><i data-lucide="instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h5>Para Candidatos</h5>
+        <ul>
+          <li><span style="cursor:pointer;" onclick="switchView('trabajadores')">Buscador de Empleo</span></li>
+          <li><span style="cursor:pointer;" onclick="switchView('trabajadores')">Talleres de Capacitación</span></li>
+          <li><span style="cursor:pointer;" onclick="switchView('trabajadores')">Coaching y Mentoría</span></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h5>Para Empresas</h5>
+        <ul>
+          <li><span style="cursor:pointer;" onclick="switchView('empresas')">Beneficios Senior</span></li>
+          <li><span style="cursor:pointer;" onclick="switchView('empresas')">Marco de Adaptabilidad</span></li>
+          <li><span style="cursor:pointer;" onclick="switchView('empresas')">Agendar Videollamada</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 ExperienciaSenior. Desarrollado con accesibilidad universal (WCAG AA).</p>
+      <p>Teléfono de ayuda gratuita: <strong>800 400 300</strong></p>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       PANEL DE ACCESIBILIDAD ACCESIBLE (FLOTANTE)
+       ========================================== -->
+  <button class="accessibility-toggle" id="a11y-toggle-btn" aria-label="Opciones de accesibilidad" aria-haspopup="true" aria-expanded="false">
+    <i data-lucide="accessibility"></i>
+  </button>
+
+  <div class="accessibility-panel" id="a11y-panel" role="dialog" aria-modal="true" aria-label="Menú de accesibilidad">
+    <div class="a11y-header">
+      <h4>Panel de Accesibilidad</h4>
+      <button id="a11y-close-btn" aria-label="Cerrar panel de accesibilidad" style="font-size: 1.5rem; color: var(--text-muted);"><i data-lucide="x"></i></button>
+    </div>
+    
+    <!-- Opción 1: Tamaño de letra -->
+    <div class="a11y-group">
+      <span class="a11y-label">Tamaño del Texto:</span>
+      <div class="a11y-buttons">
+        <button class="a11y-btn" id="a11y-font-dec" aria-label="Disminuir tamaño de letra">A-</button>
+        <button class="a11y-btn active" id="a11y-font-reset" aria-label="Restablecer tamaño de letra">Normal</button>
+        <button class="a11y-btn" id="a11y-font-inc" aria-label="Aumentar tamaño de letra">A+</button>
+      </div>
+    </div>
+
+    <!-- Opción 2: Modo Alto Contraste -->
+    <div class="a11y-group">
+      <span class="a11y-label">Modo de Visualización:</span>
+      <div class="a11y-buttons">
+        <button class="a11y-btn active" id="a11y-contrast-normal" aria-label="Visualización normal de colores">Normal</button>
+        <button class="a11y-btn" id="a11y-contrast-high" aria-label="Activar alto contraste amarillo sobre negro">Alto Contraste</button>
+      </div>
+    </div>
+    
+    <div style="font-size: var(--font-sm); color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 12px; text-align: center;">
+      Presione la tecla <kbd>Esc</kbd> para salir de este menú.
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL DE INTERACCIÓN GENERAL (RESPUESTAS)
+       ========================================== -->
+  <div class="modal-overlay" id="interactive-modal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close-btn" aria-label="Cerrar ventana emergente">&times;</button>
+      <div class="modal-icon">
+        <i data-lucide="check"></i>
+      </div>
+      <h3 id="modal-title">¡Operación Exitosa!</h3>
+      <p id="modal-description">Su solicitud ha sido registrada correctamente en nuestro sistema.</p>
+      <button class="btn btn-primary btn-lg" id="modal-ok-btn" style="width: 100%;">Entendido</button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL DE POSTULACIÓN DE EMPLEO
+       ========================================== -->
+  <div class="modal-overlay" id="apply-modal" role="dialog" aria-modal="true">
+    <div class="modal-box" style="max-width: 550px; text-align: left;">
+      <button class="modal-close" onclick="closeApplyModal()" aria-label="Cerrar ventana emergente">&times;</button>
+      <h3 style="font-size: var(--font-xl); margin-bottom: 8px;">Postulación de Empleo</h3>
+      <p id="apply-subtitle" style="color: var(--text-muted); margin-bottom: 24px; font-size: var(--font-sm);">Puesto: Asistente Recepción | Empresa Inclusiva</p>
+      
+      <form id="apply-job-form">
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="apply-name" class="form-label">Nombre Completo *</label>
+          <input type="text" id="apply-name" class="form-control" required placeholder="Ej: Roberto Gómez">
+        </div>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="apply-rut" class="form-label">RUT (Identificación Chilena) *</label>
+          <input type="text" id="apply-rut" class="form-control" required placeholder="Ej: 9.876.543-2">
+        </div>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="apply-email" class="form-label">Correo Electrónico (Opcional)</label>
+          <input type="email" id="apply-email" class="form-control" placeholder="Ej: roberto@gmail.com">
+        </div>
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="apply-phone" class="form-label">Número de Teléfono / WhatsApp *</label>
+          <input type="tel" id="apply-phone" class="form-control" required placeholder="Ej: +56 9 9876 5432">
+        </div>
+        <div class="form-group" style="margin-bottom: 24px;">
+          <label for="apply-cv" class="form-label">Adjuntar Currículum (Formatos PDF, Word)</label>
+          <input type="file" id="apply-cv" class="form-control" style="padding: 8px;">
+          <span style="font-size: var(--font-sm); color: var(--text-muted); margin-top: 4px; display: block;">* Si no tienes currículum, puedes postular igual. Te llamaremos para ayudarte a armar uno.</span>
+        </div>
+        
+        <div class="flex" style="gap: 16px;">
+          <button type="button" class="btn btn-secondary" onclick="closeApplyModal()" style="flex: 1;">Cancelar</button>
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Enviar Postulación</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
