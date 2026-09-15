@@ -1,0 +1,1448 @@
+/* ==========================================================================
+   CSS DESIGN SYSTEM - EXPERIENCIASENIOR
+   Accessible, modern, responsive vanilla CSS
+   ========================================================================== */
+
+/* 1. Imports & Variables */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Color Palette (HSL Tokens) - Warm Navy & Empathetic Cyan/Teal */
+  --h-primary: 222;
+  --s-primary: 47%;
+  --l-primary: 11%;
+  
+  --primary: hsl(var(--h-primary), var(--s-primary), var(--l-primary)); /* Navy */
+  --primary-light: hsl(220, 40%, 25%);
+  --primary-soft: hsl(220, 60%, 97%);
+  
+  --h-accent: 162;
+  --s-accent: 76%;
+  --l-accent: 38%;
+  
+  --accent: hsl(var(--h-accent), var(--s-accent), var(--l-accent)); /* Emerald/Teal */
+  --accent-hover: hsl(var(--h-accent), var(--s-accent), 28%);
+  --accent-soft: hsl(var(--h-accent), 40%, 94%);
+  
+  --warning: hsl(35, 90%, 50%);
+  --danger: hsl(350, 80%, 55%);
+  --success: hsl(140, 70%, 40%);
+  
+  --bg: hsl(210, 30%, 98%);
+  --surface: hsl(0, 0%, 100%);
+  --text: hsl(220, 35%, 15%);
+  --text-muted: hsl(220, 15%, 45%);
+  --border: hsl(220, 20%, 90%);
+  
+  /* Fonts */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Typography Scale (Multipliers for accessibility) */
+  --font-scale: 1;
+  --base-size: 1.125rem; /* 18px base for optimal readability */
+  
+  --font-sm: calc(var(--base-size) * 0.875 * var(--font-scale));
+  --font-md: calc(var(--base-size) * var(--font-scale));
+  --font-lg: calc(var(--base-size) * 1.15 * var(--font-scale));
+  --font-xl: calc(var(--base-size) * 1.35 * var(--font-scale));
+  --font-xxl: calc(var(--base-size) * 1.8 * var(--font-scale));
+  --font-hero: calc(var(--base-size) * 2.8 * var(--font-scale));
+
+  /* Styling Details */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
+  --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.12), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s ease;
+}
+
+/* 2. CSS Resets & Accessibility Defaults */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-md);
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  display: inline-block;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Focus indicator for keyboard navigation */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* 3. Layout Classes */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-padding {
+  padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 48px 0;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+/* 4. Header & Navigation */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: var(--font-xl);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-link {
+  font-weight: 500;
+  font-size: var(--font-md);
+  color: var(--text-muted);
+  padding: 8px 4px;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary);
+  border-bottom-color: var(--accent);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Toggle Menu button (for mobile) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: block;
+  }
+  .nav-menu {
+    display: none; /* Managed by JS, toggling active class */
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: var(--surface);
+    flex-direction: column;
+    padding: 24px;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+  }
+  .nav-menu.open {
+    display: flex;
+  }
+  .nav-link {
+    width: 100%;
+    padding: 12px 0;
+  }
+}
+
+/* 5. Custom Button Styles (Accessibility-focused: large, readable, tactile) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--font-md);
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  min-height: 48px; /* Touch target minimum size */
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-soft);
+  transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+.btn-outline-accent {
+  background-color: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  box-shadow: none;
+}
+
+.btn-outline-accent:hover {
+  background-color: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+.btn-lg {
+  padding: 18px 36px;
+  font-size: var(--font-lg);
+  border-radius: var(--radius-lg);
+}
+
+/* 6. Hero Section */
+.hero {
+  background: radial-gradient(circle at 80% 20%, var(--accent-soft) 0%, transparent 50%),
+              radial-gradient(circle at 10% 80%, var(--primary-soft) 0%, transparent 60%);
+  padding: 90px 0 70px;
+  position: relative;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: var(--font-hero);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.hero p {
+  font-size: var(--font-lg);
+  color: var(--text-muted);
+  max-width: 650px;
+  margin: 0 auto 36px;
+}
+
+/* 7. Profile Selector (Landing Section) */
+.profile-selector {
+  margin-top: 40px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.profile-card {
+  background-color: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
+}
+
+.profile-img-container {
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--primary-soft);
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.profile-card:hover .profile-img {
+  transform: scale(1.05);
+}
+
+.profile-body {
+  padding: 36px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.profile-body h3 {
+  font-size: var(--font-xl);
+  margin-bottom: 8px;
+}
+
+.profile-body p {
+  color: var(--text-muted);
+  font-size: var(--font-md);
+  margin-bottom: 12px;
+}
+
+/* 8. SPA Vista Controller */
+.view-section {
+  display: none; /* Handled by JS */
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.view-section.active {
+  display: block;
+  opacity: 1;
+}
+
+/* 9. SECCIÓN EMPRESAS - ESTILOS */
+.companies-hero {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+}
+
+.companies-hero h1, .companies-hero h2 {
+  color: #fff;
+}
+
+.companies-hero p {
+  color: var(--primary-soft);
+  max-width: 700px;
+  margin: 16px auto 0;
+  font-size: var(--font-lg);
+}
+
+/* Propuesta de valor: 3 Bloques con iconos */
+.value-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.value-card {
+  background-color: var(--surface);
+  padding: 40px 32px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.value-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.icon-wrapper {
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+.value-card h3 {
+  font-size: var(--font-lg);
+}
+
+.value-card p {
+  color: var(--text-muted);
+  font-size: var(--font-md);
+}
+
+/* Marco Legal - Acordeón Interactivo */
+.legal-accordion {
+  max-width: 800px;
+  margin: 48px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.accordion-item {
+  background-color: var(--surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.accordion-item:hover {
+  border-color: var(--accent);
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: var(--font-lg);
+  font-weight: 600;
+  color: var(--primary);
+  text-align: left;
+  background-color: var(--surface);
+}
+
+.accordion-header:hover {
+  background-color: var(--primary-soft);
+}
+
+.accordion-icon {
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+  color: var(--accent);
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  background-color: var(--surface);
+  border-top: 1px solid transparent;
+}
+
+.accordion-item.active .accordion-content {
+  border-top: 1px solid var(--border);
+}
+
+.accordion-body {
+  padding: 24px;
+  color: var(--text-muted);
+  font-size: var(--font-md);
+}
+
+.accordion-body ul {
+  padding-left: 20px;
+  margin-top: 12px;
+}
+
+.accordion-body li {
+  margin-bottom: 8px;
+}
+
+/* Conversión - Contacto y Calendario */
+.conversion-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .conversion-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-card, .calendar-card {
+  background-color: var(--surface);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-card h3, .calendar-card h3 {
+  font-size: var(--font-xl);
+  border-bottom: 2px solid var(--accent-soft);
+  padding-bottom: 12px;
+}
+
+/* Form Styles */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: var(--font-md);
+  color: var(--primary);
+}
+
+.form-control {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: var(--font-md);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg);
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent);
+  background-color: var(--surface);
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Calendario Integrado (Simulando Calendly) */
+.calendar-widget {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-header {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-header span {
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.calendar-day-name {
+  font-weight: 600;
+  font-size: var(--font-sm);
+  color: var(--text-muted);
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: var(--font-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.calendar-day.inactive {
+  color: var(--border);
+  cursor: not-allowed;
+}
+
+.calendar-day.active {
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.calendar-day.active:hover {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.calendar-day.selected {
+  background-color: var(--accent) !important;
+  color: #fff !important;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+
+.time-slots {
+  border-top: 1px solid var(--border);
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.time-slot {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 10px;
+  text-align: center;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: var(--font-sm);
+  transition: var(--transition-fast);
+}
+
+.time-slot:hover {
+  background-color: var(--accent-soft);
+}
+
+.time-slot.selected {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+/* 10. SECCIÓN TRABAJADOR - ESTILOS */
+.worker-hero {
+  background: linear-gradient(135deg, var(--accent-soft) 0%, var(--primary-soft) 100%);
+  padding: 60px 0;
+  text-align: center;
+}
+
+.worker-hero h1 {
+  font-size: var(--font-xxl);
+  margin-bottom: 12px;
+}
+
+.worker-hero p {
+  font-size: var(--font-lg);
+  color: var(--text-muted);
+}
+
+/* Buscador de Empleos */
+.job-search-panel {
+  background-color: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+  margin-top: -30px;
+  margin-bottom: 48px;
+  border: 1px solid var(--border);
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+@media (max-width: 900px) {
+  .search-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Job Cards List */
+.jobs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.job-card {
+  background-color: var(--surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.job-card:hover {
+  transform: translateX(4px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.job-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.job-header-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.badge-inclusiva {
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: var(--font-sm);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-inclusiva svg {
+  color: var(--accent);
+}
+
+.job-meta-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  color: var(--text-muted);
+  font-size: var(--font-md);
+}
+
+.job-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.job-salary {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: var(--font-lg);
+}
+
+.job-action {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .job-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .job-action {
+    width: 100%;
+  }
+  .job-action button {
+    width: 100%;
+  }
+}
+
+/* Espacio de Coaching y Acompañamiento */
+.coaching-section {
+  background-color: var(--primary-soft);
+  border-radius: var(--radius-lg);
+  padding: 60px 40px;
+  margin-top: 60px;
+}
+
+.coaching-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.workshop-card {
+  background-color: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  transition: var(--transition);
+}
+
+.workshop-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.workshop-badge {
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: var(--font-sm);
+  font-weight: 700;
+  align-self: flex-start;
+}
+
+.workshop-card h4 {
+  font-size: var(--font-lg);
+}
+
+.workshop-card p {
+  color: var(--text-muted);
+  font-size: var(--font-md);
+}
+
+/* Banner Destacado Mentoría 1 a 1 */
+.mentorship-banner {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  box-shadow: var(--shadow-lg);
+}
+
+.mentorship-content {
+  max-width: 600px;
+}
+
+.mentorship-banner h3 {
+  color: #fff;
+  font-size: var(--font-xl);
+  margin-bottom: 12px;
+}
+
+.mentorship-banner p {
+  color: var(--primary-soft);
+  font-size: var(--font-lg);
+}
+
+@media (max-width: 768px) {
+  .mentorship-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 36px 24px;
+  }
+}
+
+/* 11. MODALES INTERACTIVOS */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.open {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-box {
+  background-color: var(--surface);
+  border-radius: var(--radius-lg);
+  max-width: 500px;
+  width: 90%;
+  padding: 40px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  position: relative;
+  text-align: center;
+}
+
+.modal-overlay.open .modal-box {
+  transform: scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.8rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.modal-close:hover {
+  color: var(--primary);
+}
+
+.modal-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin-bottom: 24px;
+}
+
+.modal-box h3 {
+  font-size: var(--font-xl);
+  margin-bottom: 12px;
+}
+
+.modal-box p {
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  font-size: var(--font-md);
+}
+
+/* 12. ACCESSIBILITY WIDGET PANEL (Panel de Accesibilidad) */
+.accessibility-toggle {
+  background-color: var(--primary);
+  color: #fff;
+  border: 2px solid var(--accent);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 999;
+  font-size: 1.6rem;
+  transition: var(--transition);
+}
+
+.accessibility-toggle:hover {
+  transform: scale(1.1);
+  background-color: var(--accent);
+}
+
+.accessibility-panel {
+  position: fixed;
+  bottom: 90px;
+  left: 24px;
+  width: 320px;
+  background-color: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--accent);
+  box-shadow: var(--shadow-lg);
+  z-index: 999;
+  padding: 24px;
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.accessibility-panel.open {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.a11y-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.a11y-header h4 {
+  font-size: var(--font-lg);
+  color: var(--primary);
+}
+
+.a11y-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.a11y-label {
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.a11y-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.a11y-btn {
+  flex: 1;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  font-weight: 600;
+  font-size: var(--font-md);
+  text-align: center;
+  transition: var(--transition-fast);
+}
+
+.a11y-btn:hover {
+  border-color: var(--accent);
+  background-color: var(--primary-soft);
+}
+
+.a11y-btn.active {
+  background-color: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ==========================================================================
+   13. HIGH CONTRAST ACCESSIBILITY MODE OVERRIDES
+   ========================================================================== */
+body.high-contrast {
+  --bg: #000000;
+  --surface: #000000;
+  --text: #ffffff;
+  --text-muted: #e2e8f0;
+  --border: #ffff00;
+  
+  --primary: #ffff00;
+  --primary-light: #ffff00;
+  --primary-soft: #1a1a1a;
+  
+  --accent: #ffff00;
+  --accent-hover: #ffff00;
+  --accent-soft: #000000;
+  
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body.high-contrast h1, 
+body.high-contrast h2, 
+body.high-contrast h3, 
+body.high-contrast h4, 
+body.high-contrast h5, 
+body.high-contrast h6 {
+  color: #ffff00 !important;
+}
+
+body.high-contrast .header {
+  background-color: #000000 !important;
+  border-bottom: 2px solid #ffff00;
+  backdrop-filter: none;
+}
+
+body.high-contrast .nav-link {
+  color: #ffffff;
+}
+
+body.high-contrast .nav-link:hover, 
+body.high-contrast .nav-link.active {
+  color: #ffff00;
+  border-bottom-color: #ffff00;
+  font-weight: 700;
+}
+
+body.high-contrast .btn {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border: 3px solid #ffff00 !important;
+  box-shadow: none !important;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+body.high-contrast .btn:hover {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+  transform: none;
+}
+
+body.high-contrast .profile-card,
+body.high-contrast .value-card,
+body.high-contrast .accordion-item,
+body.high-contrast .contact-card,
+body.high-contrast .calendar-card,
+body.high-contrast .job-search-panel,
+body.high-contrast .job-card,
+body.high-contrast .workshop-card,
+body.high-contrast .mentorship-banner,
+body.high-contrast .modal-box,
+body.high-contrast .accessibility-panel {
+  border: 2px solid #ffff00 !important;
+  background-color: #000000 !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+}
+
+body.high-contrast .profile-card:hover,
+body.high-contrast .value-card:hover,
+body.high-contrast .job-card:hover,
+body.high-contrast .workshop-card:hover {
+  transform: none;
+  outline: 2px solid #ffff00;
+}
+
+body.high-contrast .profile-img-container {
+  border-bottom: 2px solid #ffff00;
+  background-color: #1a1a1a;
+}
+
+body.high-contrast .profile-img {
+  filter: grayscale(1) contrast(1.5);
+}
+
+body.high-contrast .hero {
+  background: none !important;
+}
+
+body.high-contrast .hero p,
+body.high-contrast .profile-body p,
+body.high-contrast .value-card p,
+body.high-contrast .accordion-body,
+body.high-contrast .job-meta-row,
+body.high-contrast .workshop-card p,
+body.high-contrast .mentorship-banner p {
+  color: #ffffff !important;
+}
+
+body.high-contrast .icon-wrapper {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00;
+}
+
+body.high-contrast .accordion-header {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+}
+
+body.high-contrast .accordion-header:hover {
+  background-color: #1a1a1a !important;
+}
+
+body.high-contrast .accordion-icon {
+  color: #ffff00 !important;
+}
+
+body.high-contrast .form-control {
+  border: 2px solid #ffff00;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body.high-contrast .form-control:focus {
+  outline: 2px solid #ffff00;
+}
+
+body.high-contrast .calendar-widget {
+  border: 2px solid #ffff00;
+}
+
+body.high-contrast .calendar-header {
+  background-color: #000000;
+  border-bottom: 2px solid #ffff00;
+  color: #ffff00;
+}
+
+body.high-contrast .calendar-day.active {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #ffff00;
+}
+
+body.high-contrast .calendar-day.selected {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+}
+
+body.high-contrast .time-slot {
+  border: 2px solid #ffff00;
+  color: #ffff00;
+  background-color: #000000;
+}
+
+body.high-contrast .time-slot:hover {
+  background-color: #1a1a1a;
+}
+
+body.high-contrast .time-slot.selected {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+}
+
+body.high-contrast .badge-inclusiva {
+  background-color: #000000;
+  color: #ffff00;
+  border: 2px solid #ffff00;
+}
+
+body.high-contrast .badge-inclusiva svg {
+  color: #ffff00;
+}
+
+body.high-contrast .job-salary {
+  color: #ffff00;
+}
+
+body.high-contrast .workshop-badge {
+  background-color: #000000;
+  color: #ffff00;
+  border: 1px solid #ffff00;
+}
+
+body.high-contrast .a11y-btn {
+  background-color: #000000;
+  border: 2px solid #ffff00;
+  color: #ffffff;
+}
+
+body.high-contrast .a11y-btn:hover {
+  background-color: #1a1a1a;
+}
+
+body.high-contrast .a11y-btn.active {
+  background-color: #ffff00;
+  color: #000000;
+}
+
+body.high-contrast .accessibility-toggle {
+  border: 3px solid #ffff00;
+  background-color: #000000;
+  color: #ffff00;
+}
+
+body.high-contrast .accessibility-toggle:hover {
+  background-color: #ffff00;
+  color: #000000;
+}
+
+body.high-contrast .modal-icon {
+  background-color: #000000;
+  color: #ffff00;
+  border: 2px solid #ffff00;
+}
+
+body.high-contrast .modal-close {
+  color: #ffff00;
+}
+
+/* 14. FOOTER ESTILOS */
+.footer {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 60px 0 30px;
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+.footer-brand h4 {
+  color: #fff;
+  font-size: var(--font-xl);
+  margin-bottom: 16px;
+}
+
+.footer-brand p {
+  color: var(--primary-soft);
+  max-width: 320px;
+  margin-bottom: 20px;
+}
+
+.footer-links h5 {
+  color: var(--accent);
+  font-size: var(--font-md);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  color: var(--primary-soft);
+}
+
+.footer-links a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  color: var(--primary-soft);
+  font-size: var(--font-sm);
+}
+
+body.high-contrast .footer {
+  background-color: #000000;
+  border-top: 2px solid #ffff00;
+}
+
+body.high-contrast .footer-brand p,
+body.high-contrast .footer-bottom,
+body.high-contrast .footer-links a {
+  color: #ffffff !important;
+}
+
+body.high-contrast .footer-links h5 {
+  color: #ffff00 !important;
+}
