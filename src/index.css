@@ -167,7 +167,9 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  min-height: 80px;
+  gap: 32px;
+  padding: 8px 0;
 }
 
 .logo {
@@ -186,7 +188,7 @@ img {
 
 .nav-menu {
   display: flex;
-  gap: 32px;
+  gap: 16px;
   list-style: none;
 }
 
@@ -197,6 +199,7 @@ img {
   padding: 8px 4px;
   border-bottom: 2px solid transparent;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -207,7 +210,7 @@ img {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
 }
 
 /* Toggle Menu button (for mobile) */
@@ -1127,6 +1130,12 @@ textarea.form-control {
   background-color: var(--accent);
   color: #fff;
   border-color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .hide-mobile {
+    display: none !important;
+  }
 }
 
 /* ==========================================================================
