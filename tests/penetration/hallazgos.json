@@ -1,0 +1,35 @@
+{
+  "herramienta": "Suite de penetración del proyecto (complementa un baseline de OWASP ZAP)",
+  "fecha": "2026-09-24",
+  "alcance": "Dominio de autenticación, autorización, contacto y perfil de ExperienciaSenior",
+  "hallazgos": [
+    {
+      "id": "PEN-01",
+      "title": "Entrada con marcado o operadores",
+      "severity": "alta",
+      "status": "controlado",
+      "detail": "El dominio rechaza script y operadores antes de persistir."
+    },
+    {
+      "id": "PEN-02",
+      "title": "Persistencia de HTML activo",
+      "severity": "alta",
+      "status": "controlado",
+      "detail": "Ni contactos ni usuarios quedan creados si el texto es inseguro."
+    },
+    {
+      "id": "PEN-03",
+      "title": "Política de contraseña en la pantalla de Auth",
+      "severity": "media",
+      "status": "no conformidad",
+      "detail": "La pantalla Auth.jsx todavía delega el mínimo de 6 caracteres a Firebase. La política del dominio exige 8 caracteres con mayúscula, minúscula, número y símbolo, y los tests de autenticación la exigen en el servicio."
+    },
+    {
+      "id": "PEN-04",
+      "title": "Autorización solo en cliente",
+      "severity": "media",
+      "status": "no conformidad",
+      "detail": "Header y Profile consultan el rol en Firestore desde el navegador. Las reglas de segregación están cubiertas por el servicio de pruebas; en producción deben replicarse en Firebase Security Rules."
+    }
+  ]
+}
